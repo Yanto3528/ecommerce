@@ -18,6 +18,11 @@ export const NavMenuItem = styled.li`
   cursor: pointer;
   a {
     color: ${({ theme }) => theme.darkgrey};
+    font-weight: 600;
+    transition: all 0.4s;
+    &:hover {
+      color: ${({ theme }) => theme.darkgrey2};
+    }
   }
 `;
 

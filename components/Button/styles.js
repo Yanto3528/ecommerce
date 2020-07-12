@@ -21,6 +21,16 @@ const defaultStyles = css`
   }
 `;
 
+const invertedBlackStyles = css`
+  background-color: transparent;
+  color: ${({ theme }) => theme.darkgrey};
+  border: 1px solid ${({ theme }) => theme.lightgrey2};
+  &:hover {
+    background-color: ${({ theme }) => theme.darkgrey};
+    color: white;
+  }
+`;
+
 export default styled.button`
   border: none;
   outline: none;
@@ -31,6 +41,8 @@ export default styled.button`
     switch (type) {
       case "inverted":
         return invertedStyles;
+      case "inverted-black":
+        return invertedBlackStyles;
       default:
         return defaultStyles;
     }
