@@ -3,7 +3,7 @@ import HomeProducts from "../components/Products/HomeProducts";
 import Testimonials from "../components/Testimonials";
 import Features from "../components/Features";
 
-export default function Home() {
+function Home() {
   return (
     <main>
       <Hero />
@@ -13,3 +13,5 @@ export default function Home() {
     </main>
   );
 }
+
+export default Home;

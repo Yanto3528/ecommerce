@@ -21,13 +21,27 @@ const defaultStyles = css`
   }
 `;
 
+const activeInvertedBlackStyles = css`
+  background-color: ${({ theme }) => theme.darkgrey};
+  color: white;
+`;
+
 const invertedBlackStyles = css`
   background-color: transparent;
   color: ${({ theme }) => theme.darkgrey};
   border: 1px solid ${({ theme }) => theme.lightgrey2};
   &:hover {
-    background-color: ${({ theme }) => theme.darkgrey};
-    color: white;
+    ${activeInvertedBlackStyles}
+  }
+`;
+
+const primaryStyles = css`
+  background-color: ${({ theme }) => theme.primary};
+  color: white;
+  border-radius: 5px;
+  transition: all 0.4s;
+  &:hover {
+    opacity: 0.9;
   }
 `;
 
@@ -43,8 +57,17 @@ export default styled.button`
         return invertedStyles;
       case "inverted-black":
         return invertedBlackStyles;
+      case "primary":
+        return primaryStyles;
       default:
         return defaultStyles;
     }
   }}
+  ${({ selected }) => selected && activeInvertedBlackStyles}
+  ${({ block }) =>
+    block &&
+    css`
+      display: block;
+      width: 100%;
+    `}
 `;

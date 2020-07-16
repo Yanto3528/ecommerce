@@ -14,7 +14,7 @@ export default createGlobalStyle`
     font-size: 1.6rem;
     font-family: "Open Sans", sans-serif;
     line-height: 1.4;
-    color: ${({ theme }) => theme.primary};
+    color: ${({ theme }) => theme.darkgrey};
   }
   a {
     text-decoration: none;

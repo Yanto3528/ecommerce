@@ -1,6 +1,7 @@
 import React from "react";
 
 import ProductList from "../../components/Products/ProductList";
+import { ProtectedRoute } from "../../contexts/AuthContext";
 
 const Products = () => {
   return (
@@ -10,4 +11,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default ProtectedRoute(Products);

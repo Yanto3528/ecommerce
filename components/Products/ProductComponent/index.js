@@ -4,6 +4,7 @@ import ProductQuantity from "../ProductQuantity";
 import ProductColor from "../ProductColor";
 import ButtonList from "../../ButtonList";
 import Button from "../../Button";
+import Select from "../../Select";
 import Container from "../../../styles/shared/Container";
 
 import { ProductComponentContainer, ProductDetails } from "./styles";
@@ -16,12 +17,28 @@ const ProductComponent = () => {
     quantity: 1,
   });
   const [selectedColor, setSelectedColor] = useState(0);
+  const [selectedSize, setSelectedSize] = useState(0);
   const { quantity } = data;
 
   const handleChange = (e) =>
     setData({ ...data, [e.target.name]: e.target.value });
 
+  const incrementQuantity = () =>
+    setData((prevState) => ({
+      ...prevState,
+      quantity: prevState.quantity + 1,
+    }));
+  const decrementQuantity = () => {
+    if (quantity > 1) {
+      setData((prevState) => ({
+        ...prevState,
+        quantity: prevState.quantity - 1,
+      }));
+    }
+  };
+
   const onChangeColor = (index) => setSelectedColor(index);
+  const onChangeSize = (index) => setSelectedSize(index);
 
   return (
     <Container>
@@ -34,21 +51,35 @@ const ProductComponent = () => {
           <h1>Product Name</h1>
           <p>$19.99</p>
           <ButtonList title="Size" margin="10px">
-            {sizes.map((size) => (
-              <Button type="inverted-black">{size.label}</Button>
+            {sizes.map((size, index) => (
+              <Select
+                type="inverted-black"
+                selected={selectedSize}
+                onClick={onChangeSize}
+                index={index}
+                component={Button}
+              >
+                {size.label}
+              </Select>
             ))}
           </ButtonList>
           <ButtonList title="Color" margin="10px">
             {colors.map((color, index) => (
-              <ProductColor
+              <Select
                 color={color}
                 onClick={onChangeColor}
                 index={index}
                 selected={selectedColor}
+                component={ProductColor}
               />
             ))}
           </ButtonList>
-          <ProductQuantity value={quantity} onChange={handleChange} />
+          <ProductQuantity
+            value={quantity}
+            onChange={handleChange}
+            increment={incrementQuantity}
+            decrement={decrementQuantity}
+          />
           <Button style={{ marginBottom: "20px" }}>ADD TO CART</Button>
           <div>
             <h3>Description</h3>

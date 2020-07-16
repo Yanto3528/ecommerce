@@ -18,22 +18,22 @@ const Header = () => {
               </Link>
             </NavMenuItem>
             <NavMenuItem>
-              <Link href="/">
+              <Link href="/products">
                 <a>Products</a>
               </Link>
             </NavMenuItem>
             <NavMenuItem>
-              <Link href="/">
+              <Link href="/about">
                 <a>About</a>
               </Link>
             </NavMenuItem>
             <NavMenuItem>
-              <Link href="/">
+              <Link href="/faq">
                 <a>FAQ</a>
               </Link>
             </NavMenuItem>
             <NavMenuItem>
-              <Link href="/">
+              <Link href="/contact">
                 <a>Contact</a>
               </Link>
             </NavMenuItem>
